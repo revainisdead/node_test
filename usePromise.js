@@ -1,3 +1,5 @@
+// run `node usePromise.js`
+
 // https://levelup.gitconnected.com/learn-javascript-promises-by-building-a-fully-working-promise-from-scratch-c9eabe73fa3
 // Promise: Plain Old Javascript Object (POJO)
 //  - Wrapper about an asynchronous operation
@@ -84,9 +86,6 @@ fakeAPI.fakeAsyncCall()
         console.log(error.message);
     })
 
-
-
-
 // Notes
 // IF
 //  1. Your asynchronous function calls reject(error) OR
@@ -94,3 +93,17 @@ fakeAPI.fakeAsyncCall()
 //
 //  then, your asynchronous function will be passed to onReject which calls the function
 //  that you passed to .catch()
+
+
+// Learned that chaining promises works great because then will run no matter WHEN it's resolved
+// Another interesting perk: the then will run instantly (seemingly synchronously)
+let t = Promise.resolve(42)
+t.then((result) => {
+    console.log("Adding 1 then, even after resolve it will run.")
+    console.log("result:", result)
+});
+t.then((result) => {
+    console.log("Adding 2 then, even after resolve it will run.")
+    console.log("result:", result)
+});
+
